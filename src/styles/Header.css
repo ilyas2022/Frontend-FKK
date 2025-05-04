@@ -1,0 +1,170 @@
+.roomgpt-header {
+  padding-top: 0;
+  padding-bottom: 0;
+  background: linear-gradient(to right, #f9fbff 0%, #f9fbff 100%);
+  border-bottom: none; /* Eliminamos la línea divisoria */
+  position: relative;
+  z-index: 10;
+  margin-top: -2rem;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-image {
+  height: 200px;
+  width: auto;
+  display: block;
+  margin-top: -2rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #4F7DF3;
+}
+
+.credits-display {
+  color: #333;
+}
+
+.user-avatar {
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 220px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  z-index: 100;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.user-email {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.user-credits {
+  font-size: 13px;
+  color: #666;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #f44336;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #f8f8f8;
+}
+
+.login-button {
+  background-color: #0066ff;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 3px; /* Hacemos el botón menos circular */
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0052cc;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 1rem 1.5rem;
+  }
+  
+  .logo-image {
+    height: 90px;
+    margin-top: -1rem;
+  }
+  
+  .nav-menu {
+    gap: 15px;
+    font-size: 14px;
+  }
+  
+  .login-button {
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0.75rem 1rem;
+  }
+  
+  .logo-image {
+    height: 70px;
+    margin-top: -0.5rem;
+  }
+  
+  .nav-menu {
+    display: none;
+  }
+}
+  
