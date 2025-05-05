@@ -194,29 +194,24 @@ function Generate() {
   // Renderizado principal del componente
   return (
     <div className='generate-page'>
-      {/* Cabecera con los créditos actualizados */}
       <Header userCredits={credits} />
-
-      {/* Contenido principal */}
       <div className="main-content">
-        {/* Mostramos el formulario si estamos en la etapa "upload" */}
         {step === 'upload' && (
           <DesignForm
-            previewUrl={previewUrl}              // URL de vista previa de la imagen
-            selectedStyle={selectedStyle}        // Estilo seleccionado
-            selectedRoom={selectedRoom}          // Tipo de habitación seleccionada      
-            isLoading={isLoading}                // Indica si se está generando un diseño
-            error={error}                        // Mensaje de error si ocurre alguno      
-            onFileChange={handleFileChange}      // Función para manejar el cambio de imagen
-            onStyleChange={e => setSelectedStyle(e.target.value)} // Función para manejar el cambio de estilo
-            onRoomChange={handleRoomChange}      // Función para manejar el cambio de habitación
-            onSubmit={handleSubmit}              // Función que se ejecuta al hacer clic en "Generar diseño"
+            previewUrl={previewUrl}
+            selectedStyle={selectedStyle}
+            selectedRoom={selectedRoom}
+            isLoading={isLoading}
+            error={error}
+            onFileChange={handleFileChange}
+            onStyleChange={e => setSelectedStyle(e.target.value)}
+            onRoomChange={handleRoomChange}
+            onSubmit={handleSubmit}
           />
         )}
 
         {step === 'result' && resultImage && previewUrl && (
           <div className="result-section">
-            {/* Información de depuración (oculta en producción) */}
             {process.env.NODE_ENV === 'development' && (
               <div className="debug-info" style={{display: 'none'}}>
                 <h4>Debug Info:</h4>
@@ -225,11 +220,11 @@ function Generate() {
               </div>
             )}
             
-            {/* Componente para comparar las imágenes */}
             {!imageError ? (
               <ImageCompare 
                 beforeImage={previewUrl}
                 afterImage={resultImage}
+                onDownload={handleDownload}
               />
             ) : (
               <div className="image-error">
