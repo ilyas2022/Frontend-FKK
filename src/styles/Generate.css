@@ -421,17 +421,20 @@
 }
 
 .login-button {
-  background-color: #0066ff;
+  background-color: #4F7DF3;
   color: white;
   padding: 10px 30px;
-  border-radius: 3px; /* Hacemos el botón menos circular */
+  border-radius: 25px;
   text-decoration: none;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(79, 125, 243, 0.15);
 }
 
 .login-button:hover {
-  background-color: #0052cc;
+  background-color: #3a63d8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(79, 125, 243, 0.2);
 }
 
 /* Estilos para el mensaje de error de imagen */

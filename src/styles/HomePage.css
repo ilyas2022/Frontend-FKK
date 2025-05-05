@@ -18,24 +18,24 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  margin-top: 0 !important; /* Forzar sin margen negativo */
+  margin-top:  !important; /* Forzar sin margen negativo */
   box-shadow: none !important; /* Forzar sin sombra */
 }
 
 .header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.25rem 2rem;
+  max-width: 200px;
+  margin-top: -1rem;
+  padding: 0.5rem 2rem; /* Reducir de 0.75rem a 0.5rem o incluso menos */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo-image {
-  height: 180px;
+  height: 40px; /* Reducir significativamente el tamaño del logo de 180px a 40px */
   width: auto;
   display: block;
-  margin-top: -1.8rem;
+  margin-top: -2rem; /* Eliminar el margen negativo de -1.8rem */
   transition: transform 0.3s ease;
 }
 
@@ -51,20 +51,20 @@
 }
 
 .login-button {
-  background-color: #0066ff;
+  background-color: #4F7DF3;
   color: #ffffff;
   padding: 10px 30px;
-  border-radius: 8px;
+  border-radius: 25px;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(79, 125, 243, 0.15);
 }
 
 .login-button:hover {
-  background-color: #0052cc;
+  background-color: #3a63d8;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 102, 255, 0.2);
+  box-shadow: 0 6px 16px rgba(79, 125, 243, 0.2);
 }
 
 /* Hero Section */
@@ -90,7 +90,8 @@
     gap: 3.5rem;
   }
   .logo-image {
-    height: 90px;
+    height: 35px; /* Ajustar proporcionalmente desde 40px */
+    margin-top: 0;
   }
   .hero-title {
     font-size: 2.6rem;
@@ -99,7 +100,8 @@
 
 @media (max-width: 480px) {
   .logo-image {
-    height: 70px;
+    height: 30px; /* Ajustar proporcionalmente */
+    margin-top: 0;
   }
   .hero-title {
     font-size: 2.2rem;
