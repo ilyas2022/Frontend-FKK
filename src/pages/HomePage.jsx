@@ -58,7 +58,6 @@ const HomePage = () => {
           <div className="hero-image">
             <div className="room-preview">
               <img src={roomBefore} alt="Room before" className="decoration-image" />
-              
             </div>
           </div>
         </div>
@@ -71,7 +70,7 @@ const HomePage = () => {
             <img src={businessInsider} alt="Business Insider" className="partner-logo" />
             <img src={msn} alt="MSN" className="partner-logo" />
             <img src={nbc} alt="NBC" className="partner-logo" />
-            <img src={businessOfHome} alt="Business of Home" className="partner-logo" />
+            <img src={businessOfHome} alt="Business of Home" className="partner-logo large-logo" />
             <img src={yahooNews} alt="Yahoo News" className="partner-logo" />
           </div>
         </div>

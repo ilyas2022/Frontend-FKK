@@ -395,11 +395,12 @@
 .roomgpt-header {
   padding-top: 0;
   padding-bottom: 0;
-  background: linear-gradient(to right, #f9fbff 0%, #f9fbff 100%);
-  border-bottom: none;
+  background-color: #F8F9FA !important; /* Forzar color de fondo */
+  border-bottom: none !important; /* Forzar sin borde */
   position: relative;
   z-index: 10;
-  margin-top: -2rem;
+  margin-top: 0 !important; /* Forzar sin margen negativo */
+  box-shadow: none !important; /* Forzar sin sombra */
 }
 
 .header-container {
