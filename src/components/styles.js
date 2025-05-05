@@ -7,6 +7,6 @@ export const styles = [
   { label: "Vintage", value: "Vintage" },
   { label: "Coastal", value: "Coastal" },
   { label: "Luxury", value: "Luxury" },
-  { label: "Tropical", value: "Tropical" },
+  { label: "Gaming", value: "Gaming" },
   { label: "Neoclassic", value: "Neoclassic" },
 ];
