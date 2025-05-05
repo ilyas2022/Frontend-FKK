@@ -2,13 +2,13 @@
 .generate-page {
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
-  background-color: #f9fbff;
+  background-color: #F8F9FA;
 }
 
 /* Estilos para el header de navegación */
 .nav-header {
-  border-bottom: 1px solid #eaeaea;
-  background-color: #ffffff;
+  border-bottom: none;
+  background-color: #F8F9FA;
   padding: 15px 0;
 }
 
@@ -110,7 +110,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f4ff;
+  background-color: #F8F9FA;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   padding: 30px;
@@ -121,7 +121,7 @@
 
 .upload-placeholder:hover {
   border-color: #4c6df5;
-  background-color: #e8eeff;
+  background-color: #F8F9FA;
   box-shadow: 0 10px 25px rgba(96, 131, 251, 0.15);
   /* Eliminado el transform para evitar problemas de renderizado */
 }
@@ -391,16 +391,11 @@
   }
 }
 
-/* Estilos para el header igual al de HomePage */
+/* Estilos para el header */
 .roomgpt-header {
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color: #F8F9FA !important; /* Forzar color de fondo */
-  border-bottom: none !important; /* Forzar sin borde */
-  position: relative;
-  z-index: 10;
-  margin-top: 0 !important; /* Forzar sin margen negativo */
-  box-shadow: none !important; /* Forzar sin sombra */
+  background-color: #F8F9FA !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 .header-container {

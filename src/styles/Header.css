@@ -3,8 +3,9 @@
   padding-bottom: 0;
   background-color: #F8F9FA !important; /* Forzar color de fondo */
   border-bottom: none !important; /* Forzar sin borde */
-  position: relative;
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   margin-top: 0 !important; /* Forzar sin margen negativo */
   width: 100%;
   font-family: 'Inter', sans-serif;
@@ -14,17 +15,22 @@
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo-image {
-  height: 200px;
+  height: 180px;
   width: auto;
   display: block;
-  margin-top: -2rem;
+  margin-top: -1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.02);
 }
 
 .nav-links {
@@ -122,16 +128,19 @@
 
 .login-button {
   background-color: #0066ff;
-  color: white;
+  color: #ffffff;
   padding: 10px 30px;
-  border-radius: 3px; /* Hacemos el botón menos circular */
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
 }
 
 .login-button:hover {
   background-color: #0052cc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 102, 255, 0.2);
 }
 
 @media (max-width: 768px) {

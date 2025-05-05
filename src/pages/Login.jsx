@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
-import logoImage from '../assets/images/logo.png';
+import Header from '../components/Header';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from '../services/authentication';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
@@ -50,25 +50,12 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      {/* Header - Same as HomePage */}
-      <header className="roomgpt-header">
-        <div className="header-container">
-          <div className="logo">
-            <Link to="/">
-              <img src={logoImage} alt="RoomioAI" className="logo-image" />
-            </Link>
-          </div>
-          <div className="nav-links">
-            <Link to="/login" className="login-button">Login</Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
-      {/* Main Login Content */}
       <div className="login-container">
         <div className="login-content">
           <div className="users-badge">
-            Over <span className="highlight">2 million users</span> have used roomGPT so far
+            Used by over <span className="highlight">2 million people</span> to redesign homes
           </div>
           
           <h1 className="login-title">
