@@ -15,6 +15,7 @@ function App() {
         <Route path="/generate" element={<Generate />} />
         <Route path="/pricing" element={<Pricing />} />
       </Routes>
+      <Analytics />
     </div>
   )
 }
