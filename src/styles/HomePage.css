@@ -18,7 +18,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  margin-top:  !important; /* Forzar sin margen negativo */
+  margin-top: 0 !important; /* Forzar sin margen negativo - corregido el espacio faltante */
   box-shadow: none !important; /* Forzar sin sombra */
 }
 
@@ -228,18 +228,18 @@
   display: none; /* Hide the labels */
 }
 
-/* Partners Section */
+/* Partners Section - Mejorado para móviles */
 .partners-section {
-  padding: 7rem 0;
+  padding: 5rem 0;  /* Reducido de 7rem para mejor visualización en móvil */
   background-color: #F8F9FA;
   width: 100%;
-  overflow: visible;
+  overflow: hidden;  /* Cambiado de visible a hidden para evitar desbordamiento en móvil */
 }
 
 .partners-container {
-  max-width: 1100px; /* Aumentado para dar más espacio */
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;  /* Aumentado para mejor espacio en móvil */
 }
 
 .partners-logos {
@@ -247,12 +247,14 @@
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   justify-items: center;
-  gap: 3.5rem; /* Aumentado de 2rem a 3.5rem para más espacio entre logos */
+  gap: 3rem;  /* Ajustado para mejor distribución */
+  row-gap: 2.5rem;  /* Separación específica vertical */
 }
 
 .partner-logo {
   max-height: 3.5rem;
   width: auto;
+  max-width: 100%;  /* Asegura que no se desborde en móvil */
   opacity: 0.65;
   transition: all 0.3s ease;
   filter: grayscale(85%);
@@ -260,9 +262,8 @@
 
 /* Estilo específico para logos más anchos */
 .large-logo {
-  max-height: 3rem; /* Aumentado de 2.2rem a 3rem */
-  grid-column: span 1;
-  max-width: 280px; /* Aumentado de 220px a 280px */
+  max-height: 3rem;
+  max-width: 100%;  /* Asegurarse de que no se desborde en móvil */
 }
 
 .partner-logo:hover {
@@ -271,35 +272,50 @@
   transform: scale(1.05);
 }
 
+@media (max-width: 992px) {
+  .partners-logos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .partners-logos {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem; /* Aumentado para mantener la proporción */
-  }
-  
-  .large-logo {
-    grid-column: span 1;
-    max-width: 220px; /* Aumentado */
+    gap: 2rem;
+    row-gap: 2.5rem;  /* Más espacio vertical en móvil */
   }
   
   .partner-logo {
-    max-height: 3rem; /* Aumentado */
+    max-height: 2.8rem;  /* Tamaño ajustado para móvil */
+    max-width: 90%;  /* Evita desbordamiento */
+  }
+  
+  .large-logo {
+    max-height: 2.5rem;
+    max-width: 90%;  /* Evita desbordamiento */
   }
 }
 
 @media (max-width: 480px) {
   .partners-logos {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem; /* Aumentado */
+    grid-template-columns: repeat(2, 1fr);  /* Solo 2 columnas en móviles pequeños */
+    gap: 1.5rem;
+    row-gap: 2rem;
   }
   
   .partner-logo {
-    max-height: 2.5rem; /* Aumentado */
+    max-height: 2.2rem;
+    max-width: 85%;  /* Evita desbordamiento */
   }
   
   .large-logo {
-    max-height: 2.2rem; /* Aumentado */
-    max-width: 200px; /* Aumentado */
+    max-height: 2rem;
+    max-width: 85%;
+  }
+  
+  .partners-section {
+    padding: 4rem 0;  /* Menos padding en móviles pequeños */
   }
 }
 
