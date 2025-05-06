@@ -25,6 +25,11 @@ import roomExample8 from '../assets/galery/room-example-8.jpeg'
 import avatar1 from "../assets/testimonials/ade.jpeg"
 import avatar2 from "../assets/testimonials/arthur.jpg"
 import avatar3 from "../assets/testimonials/eve.jpg"
+import avatar4 from "../assets/testimonials/test4.jpg"
+import avatar5 from "../assets/testimonials/test5.jpg"
+import avatar6 from "../assets/testimonials/test6.jpg"
+import avatar7 from "../assets/testimonials/test7.jpg"
+
 
 const HomePage = () => {
   const navigate = useNavigate()
@@ -90,7 +95,7 @@ const HomePage = () => {
               <p className="testimonial-text">"This is incredible, you don't need an interior designer anymore."</p>
               <div className="testimonial-author">
                 <div className="author-avatar">
-                  <img src={avatar1} alt="Ade Dada" />
+                  <img src={avatar7} alt="Ade Dada" />
                 </div>
                 <div className="author-info">
                   <h4>Ade Dada</h4>
@@ -99,16 +104,16 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="testimonial-card highlight-card">
+            <div className="testimonial-card">
               <div className="rating">★★★★★</div>
-              <p className="testimonial-text">"Finally! Something to help me get over my indecisiveness when decorating my house!"</p>
+              <p className="testimonial-text">"As someone who can't visualize decor changes, this tool saved me hours of frustration. It's like magic"</p>
               <div className="testimonial-author">
                 <div className="author-avatar">
                    <img src={avatar2} alt="Arthur Dvorkin" />
                 </div>
                 <div className="author-info">
-                  <h4>Arthur Dvorkin</h4>
-                  <p>Engineer</p>
+                  <h4>Carlos Rivera</h4>
+                  <p>Project Manager</p>
                 </div>
               </div>
             </div>
@@ -123,6 +128,48 @@ const HomePage = () => {
                 <div className="author-info">
                   <h4>Rob Attfield</h4>
                   <p>Software Engineer</p>
+                </div>
+              </div>
+            </div>
+          
+            <div className="testimonial-card">
+              <div className="rating">★★★★★</div>
+              <p className="testimonial-text">"This is the future of interior design. Fast, intuitive, and beautifully accurate."</p>
+              <div className="testimonial-author">
+                <div className="author-avatar">
+                  <img src={avatar4} alt="Ade Dada" />
+                </div>
+                <div className="author-info">
+                  <h4>Sarah Thompson</h4>
+                  <p>Content Creator</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="testimonial-card">
+              <div className="rating">★★★★★</div>
+              <p className="testimonial-text">"I was blown away by how realistic the designs were. I could actually picture myself living in those spaces."</p>
+              <div className="testimonial-author">
+                <div className="author-avatar">
+                  <img src={avatar5} alt="Ade Dada" />
+                </div>
+                <div className="author-info">
+                  <h4>Niels Hansen</h4>
+                  <p>Architect</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="testimonial-card">
+              <div className="rating">★★★★★</div>
+              <p className="testimonial-text">"Finally something that makes redecorating fun and stress-free. Highly recommend!"</p>
+              <div className="testimonial-author">
+                <div className="author-avatar">
+                  <img src={avatar6} alt="Ade Dada" />
+                </div>
+                <div className="author-info">
+                  <h4>Olivia Moore</h4>
+                  <p>Marketing Consultant</p>
                 </div>
               </div>
             </div>
