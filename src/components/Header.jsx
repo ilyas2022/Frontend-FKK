@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 import '../styles/Header.css';
+import '../styles/HeaderLoged.css';
 import logoImage from '../assets/images/logo.png';
 import { getAuth, signOut } from 'firebase/auth';
 import  {getFirestore, doc, setDoc, getDoc} from 'firebase/firestore';
@@ -61,37 +62,38 @@ const Header = ({ userCredits }) => {
             <img src={logoImage} alt="RoomioAI" className="logo-image" />
           </Link>
         </div>
-        <div className="nav-links">
-          {user ? (
-            <>
-              <div className="nav-menu">
-                <Link to="/generate" className="nav-link">Redesign</Link>
-                <Link to="/pricing" className="nav-link">Pricing</Link>
-                <span className="credits-display">{credits} credits</span>
-              </div>
-              <div className="user-avatar" onClick={() => setShowDropdown(!showDropdown)}>
-                <img 
-                  src={user.photoURL || `https://ui-avatars.com/api/?name=${user.email?.charAt(0)}&background=random`} 
-                  alt="User"
-                  className="avatar-image"
-                />
-                {showDropdown && (
-                  <div className="dropdown-menu">
-                    <div className="user-info">
-                      <span className="user-email">{user.email}</span>
-                      <span className="user-credits">({credits} credits)</span>
-                    </div>
-                    <button onClick={handleLogout} className="logout-button">
-                      Sign out
-                    </button>
+        
+        {user ? (
+          <div className="loged-nav-links">
+            <div className="loged-nav-menu">
+              <Link to="/generate" className="loged-nav-link">Redesign</Link>
+              <Link to="/pricing" className="loged-nav-link">Pricing</Link>
+              <span className="loged-credits-display">{credits} credits</span>
+            </div>
+            <div className="loged-user-avatar" onClick={() => setShowDropdown(!showDropdown)}>
+              <img 
+                src={user.photoURL || `https://ui-avatars.com/api/?name=${user.email?.charAt(0)}&background=random`} 
+                alt="User"
+                className="loged-avatar-image"
+              />
+              {showDropdown && (
+                <div className="loged-dropdown-menu">
+                  <div className="loged-user-info">
+                    <span className="loged-user-email">{user.email}</span>
+                    <span className="loged-user-credits">({credits} credits)</span>
                   </div>
-                )}
-              </div>
-            </>
-          ) : (
+                  <button onClick={handleLogout} className="loged-logout-button">
+                    Sign out
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="nav-links">
             <Link to="/login" className="login-button">Login</Link>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </header>
   );

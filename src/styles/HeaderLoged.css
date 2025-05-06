@@ -1,0 +1,163 @@
+/* Estilos para el header cuando el usuario está logueado */
+
+/* Contenedor principal de navegación */
+.loged-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    top: -2.2rem; /* Alinear con el botón de login */
+  }
+  
+  /* Menú de navegación */
+  .loged-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /* Enlaces de navegación */
+  .loged-nav-link {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .loged-nav-link:hover {
+    color: #4F7DF3;
+  }
+  
+  /* Indicador de créditos */
+  .loged-credits-display {
+    color: #333;
+    background-color: rgba(79, 125, 243, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+  }
+  
+  .loged-credits-display:hover {
+    background-color: rgba(79, 125, 243, 0.2);
+  }
+  
+  /* Avatar del usuario */
+  .loged-user-avatar {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .loged-avatar-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .loged-avatar-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Menú desplegable */
+  .loged-dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 220px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    z-index: 100;
+  }
+  
+  /* Información del usuario en el dropdown */
+  .loged-user-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .loged-user-email {
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .loged-user-credits {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  /* Botón de cerrar sesión */
+  .loged-logout-button {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #f44336;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .loged-logout-button:hover {
+    background-color: #f8f8f8;
+  }
+  
+  /* Media queries */
+  @media (max-width: 992px) {
+    .loged-nav-menu {
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .loged-nav-menu {
+      gap: 15px;
+      font-size: 14px;
+    }
+    
+    .loged-credits-display {
+      font-size: 14px;
+      padding: 4px 12px;
+    }
+    
+    .loged-avatar-image {
+      width: 36px;
+      height: 36px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .loged-nav-links {
+      gap: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .loged-nav-menu {
+      display: none;
+    }
+    
+    .loged-nav-links {
+      justify-content: flex-end;
+      width: 100%;
+    }
+  }
