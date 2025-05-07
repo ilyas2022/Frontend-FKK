@@ -233,16 +233,18 @@ function Generate() {
               </div>
             )}
             
-            <div className="result-actions">
-              <button onClick={handleTryAgain} className="action-btn try-again-btn">
-                <FaRedo className="btn-icon" /> Try Again
-              </button>
-              <button onClick={handleDownload} className="action-btn download-btn" disabled={imageError}>
-                <FaDownload className="btn-icon" /> Download
-              </button>
-              <button onClick={handleNextDesign} className="action-btn next-design-btn">
-                <FaPlus className="btn-icon" /> New Design
-              </button>
+            <div className="result-actions-container">
+              <div className="result-actions">
+                <button onClick={handleTryAgain} className="action-btn try-again-btn">
+                  <FaRedo className="btn-icon" /> Try Again
+                </button>
+                <button onClick={handleDownload} className="action-btn download-btn" disabled={imageError}>
+                  <FaDownload className="btn-icon" /> Download
+                </button>
+                <button onClick={handleNextDesign} className="action-btn next-design-btn">
+                  <FaPlus className="btn-icon" /> New Design
+                </button>
+              </div>
             </div>
             
             {error && <div className="error-message">{error}</div>}
