@@ -183,4 +183,59 @@
     font-size: 12px;
     padding: 4px 8px;
   }
+  
+  .download-icon-button {
+    width: 36px;
+    height: 36px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .image-compare-container {
+    min-height: 250px;
+  }
+  
+  .download-icon-button {
+    width: 32px;
+    height: 32px;
+    top: 8px;
+    right: 8px;
+  }
+  
+  .slider-handle {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .slider-arrows {
+    font-size: 12px;
+  }
+}
+
+/* Botón de descarga */
+.download-icon-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.download-icon-button:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
