@@ -11,6 +11,7 @@ import DesignForm from '../components/DesignForm.jsx';
 import ResultDisplay from '../components/ResultDisplay.jsx';
 import LoadingIndicator from '../components/LoadingIndicator.jsx';
 import ImageCompare from '../components/ImageCompare.jsx';
+import MobileResultView from '../components/MobileResultView.jsx';
 import logoImage from '../assets/images/logo.png';
 
 // Importamos íconos para el botón de descarga
@@ -38,6 +39,7 @@ function Generate() {
   const [error, setError] = useState(null);                       // Texto de error (si ocurre alguno)
   const [step, setStep] = useState('upload');                     // Controla qué se muestra: 'upload' o 'result'
   const [imageError, setImageError] = useState(false);            // Error específico de carga de imágenes
+  const [isMobile, setIsMobile] = useState(false);                // Detecta si es vista móvil
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,6 +64,24 @@ function Generate() {
     
     return () => unsubscribe();
   }, [navigate]);
+
+  // Detecta si el dispositivo es móvil
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Comprobar inmediatamente
+    checkIfMobile();
+    
+    // Comprobar cuando se redimensione la ventana
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Limpiar el event listener
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -211,44 +231,60 @@ function Generate() {
         )}
 
         {step === 'result' && resultImage && previewUrl && (
-          <div className="result-section">
-            {process.env.NODE_ENV === 'development' && (
-              <div className="debug-info" style={{display: 'none'}}>
-                <h4>Debug Info:</h4>
-                <p>Before Image: {previewUrl}</p>
-                <p>After Image: {resultImage}</p>
-              </div>
-            )}
-            
-            {!imageError ? (
-              <ImageCompare 
+          <>
+            {isMobile ? (
+              // Versión móvil de la vista de resultados
+              <MobileResultView
                 beforeImage={previewUrl}
                 afterImage={resultImage}
                 onDownload={handleDownload}
+                onTryAgain={handleTryAgain}
+                onNewDesign={handleNextDesign}
+                error={error}
+                imageError={imageError}
               />
             ) : (
-              <div className="image-error">
-                <FaExclamationTriangle className="error-icon" />
-                <p>There was a problem loading the generated image. Please try again.</p>
+              // Versión de escritorio de la vista de resultados
+              <div className="result-section">
+                {process.env.NODE_ENV === 'development' && (
+                  <div className="debug-info" style={{display: 'none'}}>
+                    <h4>Debug Info:</h4>
+                    <p>Before Image: {previewUrl}</p>
+                    <p>After Image: {resultImage}</p>
+                  </div>
+                )}
+                
+                {!imageError ? (
+                  <ImageCompare 
+                    beforeImage={previewUrl}
+                    afterImage={resultImage}
+                    onDownload={handleDownload}
+                  />
+                ) : (
+                  <div className="image-error">
+                    <FaExclamationTriangle className="error-icon" />
+                    <p>There was a problem loading the generated image. Please try again.</p>
+                  </div>
+                )}
+                
+                <div className="result-actions-container">
+                  <div className="result-actions">
+                    <button onClick={handleTryAgain} className="action-btn try-again-btn">
+                      <FaRedo className="btn-icon" /> Try Again
+                    </button>
+                    <button onClick={handleDownload} className="action-btn download-btn" disabled={imageError}>
+                      <FaDownload className="btn-icon" /> Download
+                    </button>
+                    <button onClick={handleNextDesign} className="action-btn next-design-btn">
+                      <FaPlus className="btn-icon" /> New Design
+                    </button>
+                  </div>
+                </div>
+                
+                {error && <div className="error-message">{error}</div>}
               </div>
             )}
-            
-            <div className="result-actions-container">
-              <div className="result-actions">
-                <button onClick={handleTryAgain} className="action-btn try-again-btn">
-                  <FaRedo className="btn-icon" /> Try Again
-                </button>
-                <button onClick={handleDownload} className="action-btn download-btn" disabled={imageError}>
-                  <FaDownload className="btn-icon" /> Download
-                </button>
-                <button onClick={handleNextDesign} className="action-btn next-design-btn">
-                  <FaPlus className="btn-icon" /> New Design
-                </button>
-              </div>
-            </div>
-            
-            {error && <div className="error-message">{error}</div>}
-          </div>
+          </>
         )}
       </div>
     </div>
