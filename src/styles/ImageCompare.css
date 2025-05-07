@@ -3,7 +3,6 @@
   width: 100%;
   max-width: 800px;
   height: auto;
-  min-height: 400px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 12px;
@@ -14,8 +13,10 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  /* Match dimensions with upload-placeholder */
+  /* Usar el mismo aspect-ratio que upload-placeholder */
   aspect-ratio: 16/9;
+  /* Añadir altura mínima consistente con upload-placeholder */
+  min-height: 350px;
 }
 
 .image-compare-container img {
@@ -192,7 +193,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .image-compare-container {
-    min-height: 300px;
+    min-height: 250px;
   }
   
   .slider-handle {
@@ -220,7 +221,7 @@
 /* Mobile phones */
 @media (max-width: 480px) {
   .image-compare-container {
-    min-height: 250px;
+    min-height: 200px;
   }
   
   .download-icon-button {
