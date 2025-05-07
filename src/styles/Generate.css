@@ -139,15 +139,6 @@
   position: relative;
   z-index: 2;
 }
-
-.upload-text {
-  color: #6083fb;
-  font-size: 16px;
-  font-weight: 500;
-  margin: 8px 0 0 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
 .preview-container {
   position: relative;
   width: 100%;
@@ -260,24 +251,13 @@
 .result-container {
   width: 100%;
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .result-image {
   width: 100%;
-  max-height: 500px;
-  object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 24px;
-}
-
-.result-actions-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 10px;
 }
 
 .result-actions {
@@ -286,7 +266,6 @@
   gap: 16px;
   margin-top: 24px;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .action-btn {
@@ -301,10 +280,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .btn-icon {
@@ -401,19 +376,10 @@
   .result-actions {
     flex-direction: column;
     align-items: center;
-    padding: 0 15px;
-    margin-top: 16px;
-  }
-  
-  .result-actions-container {
-    padding: 0 5px;
   }
   
   .action-btn {
     width: 100%;
-    margin-bottom: 10px;
-    padding: 10px 20px;
-    font-size: 14px;
   }
   
   .result-title {
@@ -422,65 +388,6 @@
   
   .result-description {
     font-size: 0.9rem;
-  }
-  
-  /* Fix for upload-placeholder on mobile */
-  .upload-placeholder {
-    min-height: 250px;
-    padding: 15px;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .upload-icon {
-    font-size: 20px;
-  }
-  
-  .upload-text {
-    font-size: 14px;
-    margin-top: 6px;
-  }
-  
-  .result-section {
-    padding: 15px 0;
-    margin-top: 10px;
-  }
-  
-  .main-content {
-    padding: 20px 15px;
-  }
-}
-
-/* Mobile phones */
-@media (max-width: 480px) {
-  .upload-placeholder {
-    min-height: 200px;
-    padding: 10px;
-  }
-  
-  .upload-text {
-    font-size: 13px;
-  }
-  
-  .result-section {
-    padding: 10px 0;
-  }
-  
-  .result-actions-container {
-    padding: 0;
-  }
-  
-  .action-btn {
-    font-size: 13px;
-    padding: 8px 16px;
-  }
-  
-  .btn-icon {
-    font-size: 14px;
-  }
-  
-  .main-content {
-    padding: 15px 10px;
   }
 }
 
