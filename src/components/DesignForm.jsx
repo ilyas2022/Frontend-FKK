@@ -45,7 +45,7 @@ const DesignForm = ({
           >
             {/* "+" icon as a visual button */}
             <div className="upload-icon">+</div>
-            <p>Upload image</p>
+            <p className="upload-text">Upload image</p>
           </div>
         )}
 
