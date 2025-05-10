@@ -373,6 +373,16 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .main-content {
+    padding: 20px 10px; /* Reduced padding for mobile */
+  }
+
+  .result-section {
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .result-actions {
     flex-direction: column;
     align-items: center;

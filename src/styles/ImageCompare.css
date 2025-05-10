@@ -167,6 +167,7 @@
   .image-compare-container {
     /* min-height: 300px; */ /* Let max-height and content dictate */
     max-height: 350px; /* Adjusted max-height for mobile */
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
   }
 
   /* Adjust sizer max-height for mobile as well */
