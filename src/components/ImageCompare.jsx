@@ -13,19 +13,6 @@ const ImageCompare = ({ beforeImage, afterImage, onDownload }) => {
     loaded: false,
   });
   const [afterImageLoaded, setAfterImageLoaded] = useState(false);
-  const [containerDimensions, setContainerDimensions] = useState({ width: '100%', height: 'auto' });
-
-  // Función para calcular y establecer las dimensiones del contenedor basadas en la imagen original
-  const updateContainerStyleWithOriginalRatio = useCallback(() => {
-    if (originalImageDetails.loaded && originalImageDetails.ratio && containerRef.current) {
-      const containerWidth = containerRef.current.offsetWidth;
-      const height = containerWidth * originalImageDetails.ratio;
-      setContainerDimensions({
-        width: '100%',
-        height: `${height}px`,
-      });
-    }
-  }, [originalImageDetails.loaded, originalImageDetails.ratio]);
 
   // Función para manejar el movimiento del slider
   const handleMove = (clientX) => {
@@ -130,40 +117,12 @@ const ImageCompare = ({ beforeImage, afterImage, onDownload }) => {
     };
   }, [beforeImage, afterImage]); // Dependencies: beforeImage, afterImage
 
-  // Efecto para actualizar las dimensiones del contenedor cuando la imagen original se carga o cambia el tamaño de la ventana
-  useEffect(() => {
-    updateContainerStyleWithOriginalRatio();
-  }, [originalImageDetails.loaded, originalImageDetails.ratio, updateContainerStyleWithOriginalRatio]);
-  
-
-  // Ajustar altura del contenedor cuando cambia el tamaño de la ventana
-  useEffect(() => {
-    const handleResize = () => {
-      // Recalculate container dimensions based on original image ratio
-      updateContainerStyleWithOriginalRatio();
-    };
-
-    window.addEventListener('resize', handleResize);
-    // Call resize once initially to set dimensions correctly after component mounts and image might be cached
-    if (originalImageDetails.loaded) {
-        handleResize();
-    }
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [originalImageDetails.loaded, updateContainerStyleWithOriginalRatio]); // Depend on originalImageDetails.loaded
-
   const allImagesLoaded = originalImageDetails.loaded && afterImageLoaded;
 
   return (
     <div 
       className="image-compare-container" 
       ref={containerRef}
-      style={{ 
-        height: containerDimensions.height,
-        width: containerDimensions.width
-      }}
       onMouseDown={handleMouseDown}
       onTouchStart={(e) => {
         // Permitir eventos de toque en el control deslizante
