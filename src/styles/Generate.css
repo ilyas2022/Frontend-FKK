@@ -100,10 +100,10 @@
 
 .image-upload-container {
   position: relative;
-  width: 90%;
+  width: 75%;
   max-width: 100%;
   margin: 20px auto;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .upload-placeholder {
@@ -410,9 +410,10 @@
 
   /* Mobile optimizations for DesignForm */
   .image-upload-container {
-    width: 90%; /* Make it even narrower for mobile */
-    max-width: 100%; /* Still useful to prevent it from exceeding parent if parent is somehow narrower */
+    width: 75%; /* Drastically reduced width for mobile */
+    max-width: 100%; 
     margin: 20px auto; /* Keeps it centered */
+    overflow: hidden; /* Added to clip any internal overflow */
   }
 
   .upload-placeholder {
