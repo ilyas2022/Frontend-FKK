@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import '../styles/ImageCompare.css';
 import { FaDownload } from 'react-icons/fa';
 
@@ -6,28 +6,26 @@ const ImageCompare = ({ beforeImage, afterImage, onDownload }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const containerRef = useRef(null);
   const isDraggingRef = useRef(false);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [originalImageDetails, setOriginalImageDetails] = useState({
+    width: null,
+    height: null,
+    ratio: null,
+    loaded: false,
+  });
+  const [afterImageLoaded, setAfterImageLoaded] = useState(false);
   const [containerDimensions, setContainerDimensions] = useState({ width: '100%', height: 'auto' });
-  const [naturalRatio, setNaturalRatio] = useState(null);
 
-  // Función para calcular dimensiones adecuadas basadas en las imágenes originales
-  const calculateDimensions = (image) => {
-    if (!image) return;
-    
-    // Guardar la relación de aspecto original
-    const ratio = image.naturalHeight / image.naturalWidth;
-    setNaturalRatio(ratio);
-    
-    if (containerRef.current) {
+  // Función para calcular y establecer las dimensiones del contenedor basadas en la imagen original
+  const updateContainerStyleWithOriginalRatio = useCallback(() => {
+    if (originalImageDetails.loaded && originalImageDetails.ratio && containerRef.current) {
       const containerWidth = containerRef.current.offsetWidth;
-      const height = containerWidth * ratio;
-      
+      const height = containerWidth * originalImageDetails.ratio;
       setContainerDimensions({
         width: '100%',
-        height: `${height}px`
+        height: `${height}px`,
       });
     }
-  };
+  }, [originalImageDetails.loaded, originalImageDetails.ratio]);
 
   // Función para manejar el movimiento del slider
   const handleMove = (clientX) => {
@@ -69,53 +67,94 @@ const ImageCompare = ({ beforeImage, afterImage, onDownload }) => {
     isDraggingRef.current = false;
   };
 
-  // Manejar la carga de imágenes y calcular las dimensiones adecuadas
-  const handleImageLoaded = (e) => {
-    calculateDimensions(e.target);
-    setImagesLoaded(true);
-  };
-
-  // Configurar listeners para eventos de ratón y táctiles
+  // Configurar listeners para eventos de ratón y táctiles, y cargar imágenes
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', stopDragging);
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
     document.addEventListener('touchend', stopDragging);
 
-    // Asegurarse de que las imágenes se carguen
-    const img1 = new Image();
-    img1.src = afterImage;
-    img1.onload = handleImageLoaded;
+    let isMounted = true;
+    setOriginalImageDetails(prev => ({ ...prev, loaded: false })); // Reset on image change
+    setAfterImageLoaded(false); // Reset on image change
 
-    const img2 = new Image();
-    img2.src = beforeImage;
-    img2.onload = handleImageLoaded;
+    const beforeImgLoader = new Image();
+    beforeImgLoader.src = beforeImage;
+    beforeImgLoader.onload = () => {
+      if (isMounted) {
+        const newRatio = (beforeImgLoader.naturalHeight > 0 && beforeImgLoader.naturalWidth > 0)
+          ? beforeImgLoader.naturalHeight / beforeImgLoader.naturalWidth
+          : (16 / 9); // Fallback ratio if dimensions are zero
 
+        setOriginalImageDetails({
+          width: beforeImgLoader.naturalWidth,
+          height: beforeImgLoader.naturalHeight,
+          ratio: newRatio,
+          loaded: true,
+        });
+      }
+    };
+    beforeImgLoader.onerror = (e) => {
+      if (isMounted) {
+        console.error("Error loading before image:", e);
+        // Set a fallback ratio and mark as loaded to prevent perpetual loading state
+        setOriginalImageDetails(prev => ({ 
+          ...prev, 
+          ratio: (16 / 9), // Fallback ratio
+          loaded: true 
+        }));
+      }
+    };
+
+    const afterImgLoader = new Image();
+    afterImgLoader.src = afterImage;
+    afterImgLoader.onload = () => {
+      if (isMounted) {
+        setAfterImageLoaded(true);
+      }
+    };
+    afterImgLoader.onerror = (e) => {
+      if (isMounted) {
+        console.error("Error loading after image:", e);
+        // Optionally handle error for after image
+        setAfterImageLoaded(true); // Mark as loaded to prevent perpetual loading state
+      }
+    };
+    
     return () => {
+      isMounted = false;
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', stopDragging);
       document.removeEventListener('touchmove', handleTouchMove);
       document.removeEventListener('touchend', stopDragging);
     };
-  }, [beforeImage, afterImage]);
+  }, [beforeImage, afterImage]); // Dependencies: beforeImage, afterImage
+
+  // Efecto para actualizar las dimensiones del contenedor cuando la imagen original se carga o cambia el tamaño de la ventana
+  useEffect(() => {
+    updateContainerStyleWithOriginalRatio();
+  }, [originalImageDetails.loaded, originalImageDetails.ratio, updateContainerStyleWithOriginalRatio]);
+  
 
   // Ajustar altura del contenedor cuando cambia el tamaño de la ventana
   useEffect(() => {
     const handleResize = () => {
-      if (containerRef.current && naturalRatio) {
-        const containerWidth = containerRef.current.offsetWidth;
-        setContainerDimensions({
-          width: '100%',
-          height: `${containerWidth * naturalRatio}px`
-        });
-      }
+      // Recalculate container dimensions based on original image ratio
+      updateContainerStyleWithOriginalRatio();
     };
 
     window.addEventListener('resize', handleResize);
+    // Call resize once initially to set dimensions correctly after component mounts and image might be cached
+    if (originalImageDetails.loaded) {
+        handleResize();
+    }
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [naturalRatio]);
+  }, [originalImageDetails.loaded, updateContainerStyleWithOriginalRatio]); // Depend on originalImageDetails.loaded
+
+  const allImagesLoaded = originalImageDetails.loaded && afterImageLoaded;
 
   return (
     <div 
@@ -153,8 +192,7 @@ const ImageCompare = ({ beforeImage, afterImage, onDownload }) => {
         <img 
           src={afterImage} 
           alt="After" 
-          onLoad={handleImageLoaded}
-          onError={(e) => console.error("Error loading after image:", e)}
+          onError={(e) => console.error("Error loading after image in img tag:", e)}
           draggable="false"
         />
       </div>
@@ -167,8 +205,7 @@ const ImageCompare = ({ beforeImage, afterImage, onDownload }) => {
         <img 
           src={beforeImage} 
           alt="Before"
-          onLoad={handleImageLoaded}
-          onError={(e) => console.error("Error loading before image:", e)}
+          onError={(e) => console.error("Error loading before image in img tag:", e)}
           draggable="false"
         />
       </div>
@@ -189,7 +226,7 @@ const ImageCompare = ({ beforeImage, afterImage, onDownload }) => {
       </div>
 
       {/* Mensaje de carga */}
-      {!imagesLoaded && (
+      {!allImagesLoaded && (
         <div className="loading-images">
           <div className="spinner"></div>
           <p>Loading images...</p>
