@@ -97,14 +97,17 @@
   max-width: 800px;
   margin: 0 auto;
   overflow-x: hidden;
-  align-items: center;
+  /* align-items: center; */ /* Removed to allow specific margin control on child */
 }
 
 .image-upload-container {
   position: relative;
-  width: 75%;
+  width: 100%;
   max-width: 100%;
-  margin: 20px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 0;
+  margin-right: 0;
   overflow: hidden;
 }
 
@@ -383,8 +386,9 @@
   }
 
   .design-form {
+    width: 100%; /* Make .design-form take full available width on mobile */
     overflow-x: hidden; /* Prevent horizontal overflow */
-    align-items: center; /* Center its flex children, including image-upload-container */
+    /* align-items: center; */ /* Keep commented out */
   }
 
   .result-section {
@@ -413,10 +417,13 @@
 
   /* Mobile optimizations for DesignForm */
   .image-upload-container {
-    width: 75%; /* Drastically reduced width for mobile */
+    width: 100%; /* Make it take full width of its parent .design-form */
     max-width: 100%; 
-    margin: 20px auto; /* Keeps it centered */
-    overflow: hidden; /* Added to clip any internal overflow */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0; /* Explicitly set right margin to 0 */
+    overflow: hidden; 
   }
 
   .upload-placeholder {
