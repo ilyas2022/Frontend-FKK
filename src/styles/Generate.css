@@ -402,8 +402,9 @@
 
   /* Mobile optimizations for DesignForm */
   .image-upload-container {
+    width: 96%; /* Make it slightly narrower */
     max-width: 100%; /* Ensure it doesn't exceed screen width */
-    margin: 20px auto; /* Reduced margin for mobile */
+    margin: 20px auto; /* Reduced margin for mobile and keeps it centered */
   }
 
   .upload-placeholder {
