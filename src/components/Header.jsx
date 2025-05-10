@@ -82,6 +82,12 @@ const Header = ({ userCredits }) => {
                     <span className="loged-user-email">{user.email}</span>
                     <span className="loged-user-credits">({credits} credits)</span>
                   </div>
+                  <Link to="/generate" className="loged-dropdown-link">
+                    Redesign
+                  </Link>
+                  <Link to="/pricing" className="loged-dropdown-link">
+                    Pricing
+                  </Link>
                   <button onClick={handleLogout} className="loged-logout-button">
                     Sign out
                   </button>

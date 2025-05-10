@@ -103,6 +103,28 @@
     color: #666;
   }
   
+  /* Styling for new dropdown links */
+  .loged-dropdown-link {
+    display: block; /* Make it take full width for easier clicking */
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #333; /* Standard link color */
+    font-weight: 500;
+    border-radius: 4px;
+    text-decoration: none; /* Remove underline from Link component */
+    font-size: 14px; /* Match user email font size */
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .loged-dropdown-link:hover {
+    background-color: #f8f8f8;
+    color: #4F7DF3; /* Highlight color on hover */
+  }
+  
   /* Botón de cerrar sesión */
   .loged-logout-button {
     background: none;
