@@ -131,6 +131,9 @@ const ImageCompare = ({ beforeImage, afterImage, onDownload }) => {
         }
       }}
     >
+      {/* Sizer image to correctly set container height */}
+      <img src={beforeImage} alt="" className="image-compare-sizer" />
+
       {/* Botón de descarga en la esquina superior derecha */}
       <button 
         className="download-icon-button" 
