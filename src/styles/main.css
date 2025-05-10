@@ -10,6 +10,16 @@ body {
   color: #111827;
   line-height: 1.5;
   background-color: #ffffff;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ensure root element is also constrained */
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Contenedor principal */
