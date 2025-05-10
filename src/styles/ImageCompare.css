@@ -165,7 +165,13 @@
 /* Responsive */
 @media (max-width: 768px) {
   .image-compare-container {
-    min-height: 300px;
+    /* min-height: 300px; */ /* Let max-height and content dictate */
+    max-height: 350px; /* Adjusted max-height for mobile */
+  }
+
+  /* Adjust sizer max-height for mobile as well */
+  .image-compare-sizer {
+    max-height: 350px; /* Match container's adjusted max-height */
   }
   
   .slider-handle {

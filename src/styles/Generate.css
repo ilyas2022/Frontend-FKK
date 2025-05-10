@@ -389,6 +389,30 @@
   .result-description {
     font-size: 0.9rem;
   }
+
+  /* Mobile optimizations for DesignForm */
+  .upload-placeholder {
+    min-height: 250px; /* Reduced min-height for mobile */
+    /* aspect-ratio: auto; */ /* Optionally make aspect ratio more flexible */
+    padding: 20px; /* Adjust padding if needed */
+  }
+
+  .preview-container {
+    /* Adjust margin or other properties for preview container if needed on mobile */
+  }
+
+  .preview-image {
+    max-height: 350px; /* Reduced max-height for mobile, consistent with ImageCompare */
+  }
+
+  .options-container {
+    /* Potentially adjust layout/spacing of style/room selectors on mobile */
+  }
+
+  .generate-btn {
+    padding: 10px 20px; /* Slightly smaller button padding for mobile */
+    font-size: 15px;
+  }
 }
 
 /* Estilos para el header */
