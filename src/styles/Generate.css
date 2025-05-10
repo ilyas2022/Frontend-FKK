@@ -96,6 +96,8 @@
   gap: 30px;
   max-width: 800px;
   margin: 0 auto;
+  overflow-x: hidden;
+  align-items: center;
 }
 
 .image-upload-container {
@@ -382,6 +384,7 @@
 
   .design-form {
     overflow-x: hidden; /* Prevent horizontal overflow */
+    align-items: center; /* Center its flex children, including image-upload-container */
   }
 
   .result-section {
