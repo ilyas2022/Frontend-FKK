@@ -11,7 +11,6 @@ import DesignForm from '../components/DesignForm.jsx';
 import ResultDisplay from '../components/ResultDisplay.jsx';
 import LoadingIndicator from '../components/LoadingIndicator.jsx';
 import ImageCompare from '../components/ImageCompare.jsx';
-import MobileResultView from '../components/MobileResultView.jsx';
 import logoImage from '../assets/images/logo.png';
 
 // Importamos íconos para el botón de descarga
@@ -39,7 +38,6 @@ function Generate() {
   const [error, setError] = useState(null);                       // Texto de error (si ocurre alguno)
   const [step, setStep] = useState('upload');                     // Controla qué se muestra: 'upload' o 'result'
   const [imageError, setImageError] = useState(false);            // Error específico de carga de imágenes
-  const [isMobile, setIsMobile] = useState(false);                // Detecta si es vista móvil
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,24 +62,6 @@ function Generate() {
     
     return () => unsubscribe();
   }, [navigate]);
-
-  // Detecta si el dispositivo es móvil
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    // Comprobar inmediatamente
-    checkIfMobile();
-    
-    // Comprobar cuando se redimensione la ventana
-    window.addEventListener('resize', checkIfMobile);
-    
-    // Limpiar el event listener
-    return () => {
-      window.removeEventListener('resize', checkIfMobile);
-    };
-  }, []);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -232,7 +212,7 @@ function Generate() {
 
         {step === 'result' && resultImage && previewUrl && (
           <>
-            {isMobile ? (
+            {/* {isMobile ? (  // Removed MobileResultView and isMobile check here
               // Versión móvil de la vista de resultados
               <MobileResultView
                 beforeImage={previewUrl}
@@ -243,8 +223,8 @@ function Generate() {
                 error={error}
                 imageError={imageError}
               />
-            ) : (
-              // Versión de escritorio de la vista de resultados
+            ) : ( */} 
+              {/* Versión de escritorio de la vista de resultados - now used for all */}
               <div className="result-section">
                 {process.env.NODE_ENV === 'development' && (
                   <div className="debug-info" style={{display: 'none'}}>
@@ -283,7 +263,7 @@ function Generate() {
                 
                 {error && <div className="error-message">{error}</div>}
               </div>
-            )}
+            {/* )} */}
           </>
         )}
       </div>
