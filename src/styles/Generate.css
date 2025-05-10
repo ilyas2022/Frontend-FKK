@@ -401,6 +401,11 @@
   }
 
   /* Mobile optimizations for DesignForm */
+  .image-upload-container {
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+    margin: 20px auto; /* Reduced margin for mobile */
+  }
+
   .upload-placeholder {
     min-height: 250px; /* Reduced min-height for mobile */
     /* aspect-ratio: auto; */ /* Optionally make aspect ratio more flexible */
