@@ -373,12 +373,18 @@
 @media (max-width: 768px) {
   .main-content {
     padding: 20px 10px; /* Reduced padding for mobile */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+  }
+
+  .design-form {
+    overflow-x: hidden; /* Prevent horizontal overflow */
   }
 
   .result-section {
     max-width: 100%; /* Ensure it doesn't exceed screen width */
     padding-left: 0;
     padding-right: 0;
+    overflow-x: hidden; /* Prevent horizontal overflow */
   }
 
   .result-actions {
@@ -400,9 +406,9 @@
 
   /* Mobile optimizations for DesignForm */
   .image-upload-container {
-    width: 96%; /* Make it slightly narrower */
-    max-width: 100%; /* Ensure it doesn't exceed screen width */
-    margin: 20px auto; /* Reduced margin for mobile and keeps it centered */
+    width: 90%; /* Make it even narrower for mobile */
+    max-width: 100%; /* Still useful to prevent it from exceeding parent if parent is somehow narrower */
+    margin: 20px auto; /* Keeps it centered */
   }
 
   .upload-placeholder {
